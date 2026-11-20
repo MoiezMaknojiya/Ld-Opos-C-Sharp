@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="ApiLibrary/ApiLibrary.csproj" />
+  <Project Path="LdOposService/LdOposService.csproj" />
+  <Project Path="LdOposManager/LdOposManager.csproj" />
+</Solution>

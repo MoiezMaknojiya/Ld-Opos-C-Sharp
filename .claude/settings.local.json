@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(dotnet build \"C:\\\\Users\\\\Moiez Ali\\\\source\\\\repos\\\\LdOposService\\\\LdOposManager.slnx\" -v q --nologo)",
+      "PowerShell($progid = Get-ItemProperty -Path \"HKLM:\\\\SOFTWARE\\\\Classes\\\\CoreScanner.CoreScanner\\\\CLSID\" -ErrorAction SilentlyContinue; if \\($progid\\) { $clsid = $progid.'\\(default\\)'; Write-Output \"CLSID: $clsid\"; $tlb = Get-ItemProperty -Path \"HKLM:\\\\SOFTWARE\\\\Classes\\\\CLSID\\\\$clsid\\\\TypeLib\" -ErrorAction SilentlyContinue; Write-Output \"TypeLib: $\\($tlb.'\\(default\\)'\\)\"; $ver = Get-ItemProperty -Path \"HKLM:\\\\SOFTWARE\\\\Classes\\\\CLSID\\\\$clsid\\\\Version\" -ErrorAction SilentlyContinue; Write-Output \"Version: $\\($ver.'\\(default\\)'\\)\" } else { Write-Output \"ProgID CoreScanner.CoreScanner not found in HKLM. Searching...\" })",
+      "PowerShell(Get-ChildItem \"C:\\\\Program Files\\\\Zebra Technologies\\\\Barcode Scanners\" -Recurse -Depth 3 -ErrorAction SilentlyContinue | Where-Object { -not $_.PSIsContainer } | Select-Object -First 60 FullName)",
+      "PowerShell($asm = [System.Reflection.Assembly]::LoadFile\\(\"C:\\\\Users\\\\Moiez Ali\\\\source\\\\repos\\\\LdOposService\\\\libs\\\\Interop.CoreScanner.dll\"\\); $asm.FullName; $asm.GetTypes\\(\\) | Select-Object -First 15 FullName)",
+      "PowerShell($out = \"C:\\\\Users\\\\MOIEZA~1\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-Moiez-Ali-source-repos-LdOposService\\\\9a25b5cf-1d6e-4f34-bc4f-57cb6d647ce4\\\\scratchpad\\\\svc_run.log\"; $p = Start-Process -FilePath \"dotnet\" -ArgumentList \"run --project `\"C:\\\\Users\\\\Moiez Ali\\\\source\\\\repos\\\\LdOposService\\\\LdOposService\\\\LdOposService.csproj`\" --no-build\" -RedirectStandardOutput $out -RedirectStandardError \"$out.err\" -PassThru -NoNewWindow; Start-Sleep -Seconds 12; if \\(-not $p.HasExited\\) { Stop-Process -Id $p.Id -Force -Confirm:$false }; Get-Content $out; Write-Output \"---- STDERR ----\"; Get-Content \"$out.err\")",
+      "PowerShell(Stop-Process -Id 5340 -Force -Confirm:$false -ErrorAction SilentlyContinue)",
+      "PowerShell(Get-Process -Name \"LdOposService\" -ErrorAction SilentlyContinue)",
+      "PowerShell(Stop-Process -Force -Confirm:$false)",
+      "PowerShell(Get-Service -Name \"LdOposService\" -ErrorAction SilentlyContinue | Format-Table Name, Status -AutoSize; Get-CimInstance Win32_Process -Filter \"ProcessId = 5340\" | Select-Object ProcessId, ExecutablePath, @{N='Owner';E={\\($_ | Invoke-CimMethod -MethodName GetOwner\\).User}})",
+      "PowerShell(taskkill /PID 5340 /F)",
+      "PowerShell($p = Get-Process -Id 5340 -ErrorAction SilentlyContinue; if \\($p\\) { Write-Output \"Still running: $\\($p.ProcessName\\), started $\\($p.StartTime\\)\"; Get-CimInstance Win32_Process -Filter \"ProcessId = 5340\" | Select-Object CommandLine } else { Write-Output \"Process 5340 is gone\" })",
+      "PowerShell(dotnet build \"C:\\\\Users\\\\Moiez Ali\\\\source\\\\repos\\\\LdOposService\\\\LdOposService\\\\LdOposService.csproj\" -v q --nologo -o \"C:\\\\Users\\\\MOIEZA~1\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-Moiez-Ali-source-repos-LdOposService\\\\9a25b5cf-1d6e-4f34-bc4f-57cb6d647ce4\\\\scratchpad\\\\buildcheck\")",
+      "PowerShell(dotnet build \"C:\\\\Users\\\\Moiez Ali\\\\source\\\\repos\\\\LdOposService\\\\LdOposManager\\\\LdOposManager.csproj\" -v q --nologo)",
+      "PowerShell(if \\(Test-Path \"C:\\\\Users\\\\Moiez Ali\\\\source\\\\repos\\\\LdOposService\\\\ApiLibrary\\\\Properties\"\\) { $items = Get-ChildItem \"C:\\\\Users\\\\Moiez Ali\\\\source\\\\repos\\\\LdOposService\\\\ApiLibrary\\\\Properties\" -Force; if \\($items.Count -eq 0\\) { Remove-Item \"C:\\\\Users\\\\Moiez Ali\\\\source\\\\repos\\\\LdOposService\\\\ApiLibrary\\\\Properties\" -Confirm:$false; Write-Output \"Empty Properties folder deleted\" } else { Write-Output \"Properties folder not empty:\"; $items | Select-Object Name } }; dotnet build \"C:\\\\Users\\\\Moiez Ali\\\\source\\\\repos\\\\LdOposService\\\\LdOposManager.slnx\" -v q --nologo)",
+      "PowerShell(dotnet remove \"C:\\\\Users\\\\Moiez Ali\\\\source\\\\repos\\\\LdOposService\\\\LdOposService\\\\LdOposService.csproj\" package Serilog.AspNetCore)",
+      "PowerShell(dotnet add \"C:\\\\Users\\\\Moiez Ali\\\\source\\\\repos\\\\LdOposService\\\\LdOposService\\\\LdOposService.csproj\" package Serilog.Extensions.Hosting)",
+      "PowerShell(dotnet add \"C:\\\\Users\\\\Moiez Ali\\\\source\\\\repos\\\\LdOposService\\\\ApiLibrary\\\\ApiLibrary.csproj\" package System.Security.Cryptography.ProtectedData)",
+      "WebFetch(domain:techdocs.zebra.com)",
+      "WebFetch(domain:web.archive.org)",
+      "WebSearch",
+      "PowerShell(git -C \"C:\\\\Users\\\\Moiez Ali\\\\source\\\\repos\\\\LdOposService\" init)",
+      "PowerShell(git -C \"C:\\\\Users\\\\Moiez Ali\\\\source\\\\repos\\\\LdOposService\" config user.name 2>$null)",
+      "PowerShell(git config --global user.name)",
+      "PowerShell(git config --global user.email)"
+    ]
+  }
+}
